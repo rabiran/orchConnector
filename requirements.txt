@@ -1,0 +1,6 @@
+requests_kerberos
+python-dotenv
+flask
+json2xml
+xmltodict
+python-dotenv
