@@ -57,7 +57,7 @@ def orchProxy():
         r = requests.get(url, auth=kerberos_auth)
     elif method == 'POST':
         print('post with '+data)
-        r = requests.post(url, data=data, auth=kerberos_auth)
+        r = requests.post(url, data=data.encode('utf8'), auth=kerberos_auth)
     else:
         return Response("method can only be GET or POST", status=400)
 
@@ -65,7 +65,7 @@ def orchProxy():
     if r.status_code is not 200:
             return Response("orch failed with "+str(r.status_code), status=r.status_code)
 
-    return Response("ok", status=200)
+    return Response(r.content, status=200)
 
 
 if __name__=="__main__":
